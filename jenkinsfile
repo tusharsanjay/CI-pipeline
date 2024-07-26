@@ -1,14 +1,13 @@
 pipeline {
     agent any
-    
     environment {
         name = 'tushar'
     }
 
     parameters {
         string(name: 'person', defaultValue: 'Saurav Sharma', description: "Who are you?")
-        booleanParam(name: 'isMale', defaultValue: true, description: "")
-        choice(name: 'City', choices: ['nagpur', 'Mumbai', 'rajura'], description: "")
+        booleanParam(name: 'isMale', defaultValue: true, description: "Is the person male?")
+        choice(name: 'City', choices: ['nagpur', 'Mumbai', 'rajura'], description: "Select a city")
     }
 
     stages {
@@ -17,7 +16,6 @@ pipeline {
                 sh '''
                 ls
                 pwd
-                ls
                 '''
             }
         }
@@ -31,13 +29,13 @@ pipeline {
         
         stage('deploy on test') {
             steps {
-                echo 'Hello World'
+                echo 'Deploying on test environment'
             }
         }
         
         stage('deploy on prod') {
             steps {
-                echo 'Hello World'
+                echo 'Deploying on production environment'
             }
         }
     }
